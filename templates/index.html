@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<title> Classical Music Classifier </title>
+
+    	<meta content="Fernando Labra" name="author">
+    	<meta content="Classical Music Classifier" name= "description">
+    	<meta content="Music, Classical, Works" name="keywords">
+
+    	<link rel="stylesheet" href="/static/styles.css" type="text/css" media="all">
+    	<script language="JavaScript" src="/static/indexCode.js"></script>
+    </head>
+
+    <body>
+    	<h1 id="TITLE" class="MAIN"> Classical Music Classifier </h1>
+
+		<fieldset>
+			<form name="query1" id="query1" action="{{ url_for('parameters') }}" method="post">
+				<label for="author">Author:</label>
+				<input type="text" id="author" name="author">
+				<br><br>
+
+				<label for="type">Type:</label>
+				<select name="ttypeCombo" id="ttypeCombo" onchange="alterTtype()">
+					<option value="Ballet">Ballet</option>
+					<option value="Solo Piano">Solo Piano</option>
+					<option value="Solo Organ">Solo Organ</option>
+					<option value="String Quartet">String Quartet</option>
+					<option value="Orchestra">Orchestra</option>
+					<option value="Concert for Violin and Orchestra">Concert for Violin and Orchestra</option>
+				</select>
+				<input type="hidden" id="ttype" name="ttype" value="Ballet">
+				<br><br>
+
+
+				<button type="submit" class="block"> Search </button>
+			</form>
+		</fieldset>
+
+		<p> </p>
+
+		<fieldset>
+                <legend> Query Results </legend>
+
+                <table class="table" id="table">
+                	<tr class="table_header">
+                		{% for header in table_headings %}
+                			<th class="table_cell">{{ header }}</th>
+                		{% endfor %}
+                	</tr>
+                	{% for row in table_data %}
+                		<tr class="table_row" ondblclick="openDetails()">
+                			{% for cell in row %}
+                				<td class="table_cell">{{ cell }}</td>
+                			{% endfor %}
+                		</tr>
+                	{% endfor %}
+                </table>
+        </fieldset>
+
+        <form name="query2" id="query2" action="{{ url_for('details') }}">
+	        <input type="hidden" id="name" name="name">
+	        <input type="hidden" id="opus" name="opus">
+        </form>
+    </body>
+
+</html>
