@@ -13,8 +13,6 @@ def startDB():
     # Obtain Information as a String
     sql_as_string = [sql_file[0].read(), sql_file[1].read()]
 
-    print(sql_as_string[1])
-
     # Execute scripts for structure and Data
     cursor.executescript(sql_as_string[0])
     cursor.executescript(sql_as_string[1])
