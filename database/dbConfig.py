@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sqlite3
 
 def startDB():
@@ -6,10 +8,12 @@ def startDB():
     cursor = connection.cursor()
 
     # Create File Descriptor
-    sql_file = [open("database/dbInfo/schema.sql"), open("database/dbInfo/data.sql")]
+    sql_file = [open("database/dbInfo/schema.sql", encoding='UTF-8'), open("database/dbInfo/data.sql", encoding='UTF-8')]
 
     # Obtain Information as a String
     sql_as_string = [sql_file[0].read(), sql_file[1].read()]
+
+    print(sql_as_string[1])
 
     # Execute scripts for structure and Data
     cursor.executescript(sql_as_string[0])

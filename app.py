@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Import Dependencies
 from flask import Flask, render_template, request
 from database.dbConfig import startDB, getAuthorInfo, getWorkInfo
